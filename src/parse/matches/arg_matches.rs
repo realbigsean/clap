@@ -74,8 +74,8 @@ pub(crate) struct SubCommand {
 /// [`App::get_matches`]: crate::App::get_matches()
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ArgMatches {
-    pub(crate) args: IndexMap<Id, MatchedArg>,
-    pub(crate) subcommand: Option<Box<SubCommand>>,
+    pub args: IndexMap<Id, MatchedArg>,
+    pub subcommand: Option<Box<SubCommand>>,
 }
 
 impl Default for ArgMatches {
