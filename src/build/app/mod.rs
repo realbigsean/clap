@@ -2027,8 +2027,17 @@ impl<'help> App<'help> {
     /// ```
     /// [`env::args_os`]: std::env::args_os()
     /// [`App::get_matches`]: App::get_matches()
+    #[inline]
     pub fn get_matches_mut(&mut self) -> ArgMatches {
-        self.try_get_matches_from_mut(&mut env::args_os())
+        self.get_matches_from_mut(&mut env::args_os())
+    }
+
+    pub fn get_matches_from_mut<I, T>(&mut self, itr: I) -> ArgMatches
+        where
+            I: IntoIterator<Item = T>,
+            T: Into<OsString> + Clone,
+    {
+        self.try_get_matches_from_mut(itr)
             .unwrap_or_else(|e| {
                 // Otherwise, write to stderr and exit
                 if e.use_stderr() {
