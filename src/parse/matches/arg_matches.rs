@@ -75,7 +75,7 @@ pub(crate) struct SubCommand {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ArgMatches {
     pub args: IndexMap<Id, MatchedArg>,
-    pub subcommand: Option<Box<SubCommand>>,
+    pub(crate) subcommand: Option<Box<SubCommand>>,
 }
 
 impl Default for ArgMatches {
