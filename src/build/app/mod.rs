@@ -2032,6 +2032,20 @@ impl<'help> App<'help> {
         self.get_matches_from_mut(&mut env::args_os())
     }
 
+    /// Starts the parsing process, just like [`App::get_matches_from`] but doesn't consume the `App`.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// # use clap::{App, Arg};
+    /// let arg_vec = vec!["my_prog", "some", "args", "to", "parse"];
+    ///
+    /// let mut app = App::new("myprog")
+    ///     // Args and options go here...
+    ///     ;
+    /// let matches = app.get_matches_from_mut(arg_vec);
+    /// ```
+    /// [`App::get_matches`]: App::get_matches_from()
     pub fn get_matches_from_mut<I, T>(&mut self, itr: I) -> ArgMatches
         where
             I: IntoIterator<Item = T>,
