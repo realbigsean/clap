@@ -214,6 +214,12 @@ impl<'help> App<'help> {
         self.args.args()
     }
 
+    /// Iterate through the set of arguments, getting a mutable reference to each.
+    #[inline]
+    pub fn get_arguments_mut(&mut self) -> impl Iterator<Item = &mut Arg<'help>> {
+        self.args.args_mut()
+    }
+
     /// Iterate through the *positionals* arguments.
     #[inline]
     pub fn get_positionals(&self) -> impl Iterator<Item = &Arg<'help>> {
